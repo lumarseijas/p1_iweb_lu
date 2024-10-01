@@ -6,7 +6,6 @@ import CONFIG from "./config/config"
 import { mock1 } from './constants/mock'
 //import { mock2 } from './constants/mock2'
 
-//const url_forzada = `${CONFIG.server_url}forecast.json?key=${CONFIG.api_key}&q=London&days=${CONFIG.num_items_query}&aqi=no&alerts=no`
 const USE_SERVER = CONFIG.use_server
 
 function App() {
@@ -36,13 +35,13 @@ function App() {
         
         if (response.status == 200) {
           setResultado(datos);
-          //setError(null);
+          setError(null);
 
         } else { 
           setResultado(datos) }
       } catch (e) {
-        //setError(e.message)
-        console.log("ERROR", e);
+        setError(e.message)
+        
 
       }
     } else {
