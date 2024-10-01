@@ -10,7 +10,7 @@ import { mock1 } from './constants/mock'
 const USE_SERVER = CONFIG.use_server
 
 function App() {
-  //const [count, setCount] = useState(0) // no la utilizamos
+  
   const [resultado, setResultado] = useState("")
 
   const [latitud, setLatitud] = useState(CONFIG.default_lat)
@@ -34,14 +34,16 @@ function App() {
         const response = await fetch(`${CONFIG.server_url}${queryparams}`);
         const datos = await response.json(); 
         
-        if (response.status === 200) {
+        if (response.status == 200) {
           setResultado(datos);
-          setError(null);
+          //setError(null);
 
         } else { 
-          setError(datos) }
-      } catch (error) {
-        setError(error.message)
+          setResultado(datos) }
+      } catch (e) {
+        //setError(e.message)
+        console.log("ERROR", e);
+
       }
     } else {
         setResultado(mock1); //raro, porq si pongo mock2 en la pagina web sale bien, pero de nota mal
@@ -64,8 +66,8 @@ function App() {
         <br />
         <button type='submit' id='buscar' onClick={handleBuscar}>Buscar</button>
 
-        {resultado && !error && <Resultados numitems={CONFIG.num_items_show} datos={resultado} />}
-        {error && <><div id="error"><b>Error</b></div> <p id="error_warning"><b>Se ha producido un error</b></p><p>Descripción: Obtenido error al llamar al API. Código {error.cod}</p><p>Mensaje del servidor: {error.message}</p></>}
+        {resultado && <Resultados numitems={CONFIG.num_items_show} datos={resultado} />}
+       
       </div>
 
     </>

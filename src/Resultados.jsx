@@ -4,11 +4,26 @@ function Resultados(props) {
 
   const datos = props.datos;
   const numitems = props.numitems;
+  if (!datos.forecast || !datos.forecast.forecastday) { // Si no existen estos campos, significa que la API ha devuelto un error
+
+    return (
+        <>
+            <div id='error'>
+                <h2>Error</h2>
+                <h3>Se ha producido un error</h3>
+                <p>Descripción: Código {datos.error.code}</p>
+                <p>Mensaje: {datos.error.message}</p>
+            </div>
+
+        </>
+    )
+}
 
   const city = datos.location.name;
   const country = datos.location.country;
   const timezone = datos.location.tz_id;
   const day = datos.forecast.forecastday; //array de pronosticos de los dias siguietnes
+
 
   return (
     <>
