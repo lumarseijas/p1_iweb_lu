@@ -4,7 +4,7 @@ function Resultados(props) {
 
   const datos = props.datos;
   const numitems = props.numitems;
-  if (!datos.forecast || !datos.forecast.forecastday) { // Si no existen estos campos, significa que la API ha devuelto un error
+  if (!datos.forecast || !datos.forecast.forecastday) { 
 
     return (
         <>
