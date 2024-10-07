@@ -45,7 +45,7 @@ function App() {
 
       }
     } else {
-        setResultado(mock1); //raro, porq si pongo mock2 en la pagina web sale bien, pero de nota mal
+        setResultado(mock1); 
 
     }
   }
